@@ -38,6 +38,11 @@ app.get('/swag', (req, res) => {
   res.send('get swag');
 });
 
+// params 방법
+app.get('/swag/:person', (req, res) => {
+  res.send(req.params.person);
+}); //http://localhost:3000/swag/GD 라고 하면 GD라고 유동적으로 요청값에 따라 바뀐다. ''로 객체로
+
 // swag에 대한 pos 요청을 처리합니다.
 app.post('/swag', (req, res) => {
   // 응답 본문에 'post swag''를 보냅니다.
