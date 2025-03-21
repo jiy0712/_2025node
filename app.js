@@ -4,6 +4,8 @@ const express = require('express');
 // express 애플리케이션을 생성합니다.
 const app = express();
 
+app.use(express.json());
+
 app.get('/swag', (req, res) => {
   // 응답 본문에 'Hello, World!'를 보냅니다.
   res.send('get swag');
@@ -11,7 +13,7 @@ app.get('/swag', (req, res) => {
 
 app.post('/swag', (req, res) => {
   // 응답 본문에 'Hello, World!'를 보냅니다.
-  res.send('post swag');
+  res.send(req.body);
 });
 
 
