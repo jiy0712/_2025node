@@ -26,11 +26,10 @@
 
 // express 모듈을 가져옵니다.
 const express = require('express');
+const swagRouter = require('./routes/swag');
 
 // express 애플리케이션 객체를 생성합니다.
 const app = express();
-
-app.use(express.json());
 
 // swag에 대한 GET 요청을 처리합니다.
 app.get('/swag', (req, res) => {
@@ -48,6 +47,9 @@ app.post('/swag', (req, res) => {
   // 응답 본문에 'post swag''를 보냅니다.
   res.send(req.body);  //단축키 F9 (빨간색) : post로 하면 객체로 변환된 것을 볼 수 있다 (중간점 찍기 : 코드 잘 돌아가나 확인)
 });
+
+app.use(express.json());
+app.use('/swag', swagRouter);
 
 // 서버가 포트 3000에서 요청을 대기합니다.
 app.listen(3000, () => {
