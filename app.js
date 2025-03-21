@@ -7,14 +7,18 @@ const app = express();
 app.use(express.json());
 
 app.get('/swag', (req, res) => {
-  // 응답 본문에 'Hello, World!'를 보냅니다.
   res.send('get swag');
 });
 
+app.get('/swag/:person', (req, res) => {
+  res.send(req.params.person);
+});
+
 app.post('/swag', (req, res) => {
-  // 응답 본문에 'Hello, World!'를 보냅니다.
   res.send(req.body);
 });
+
+
 
 
 // 서버가 포트 3000에서 요청을 대기합니다.
