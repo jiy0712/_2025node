@@ -27,6 +27,7 @@
 // express 모듈을 가져옵니다.
 const express = require('express');
 const swagRouter = require('./routes/swag');
+const homeRouter = require('./router/home');
 
 // express 애플리케이션 객체를 생성합니다.
 const app = express();
@@ -36,7 +37,7 @@ app.get('/swag', (req, res) => {
   // 응답 본문에 'get swag'를 보냅니다.
   res.send('get swag');
 });
-
+ 
 // params 방법
 app.get('/swag/:person', (req, res) => {
   res.send(req.params.person);
@@ -48,8 +49,21 @@ app.post('/swag', (req, res) => {
   res.send(req.body);  //단축키 F9 (빨간색) : post로 하면 객체로 변환된 것을 볼 수 있다 (중간점 찍기 : 코드 잘 돌아가나 확인)
 });
 
+//home 
+app.get('/home', (req, res) =>{
+  res.send('I Want To Go HOME');
+})
+app.get('/home/:person', (req, res) => {
+  res.send(req.paarms.parson);
+});
+
+app.post('/home', (req, res) => {
+  res.send(req.body);
+})
+
 app.use(express.json());
 app.use('/swag', swagRouter);
+app.use('/home', homeRouter);
 
 // 서버가 포트 3000에서 요청을 대기합니다.
 app.listen(3000, () => {
