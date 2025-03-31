@@ -46,7 +46,7 @@ app.get('/travel', (req, res) => {
 });
 //console.log(path.join(__dirname, 'views'));
 
-// 서버가 포트 3000에서 요청을 대기합니다.
+// 서버가 포트 30001에서 요청을 대기합니다.
 app.listen(3001, () => {
     console.log('서버가 http://localhost:3001에서 실행 중입니다.');
 });
