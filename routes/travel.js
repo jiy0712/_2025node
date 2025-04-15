@@ -3,17 +3,17 @@ const db = require('../db');
 const router = express.Router();
 
 // 게시글 목록을 보여줌
-router.get('/', (req, res) => {
-  const _query = 'SELECT id, name FROM travellist';
-  db.query(_query, (err, results) => {
-    if (err) {
-      console.error('데이터베이스 쿼리 실패');
-      res.status(500).send('Internal Server Error');
-      return;
-    }
+router.get('/', async (req, res) => {
+  try {
+    const _query = 'SELECT id, name FROM travellist';
+    const [results] =  await db.query(_query);
     const travelList = results;
     res.render('travel', { travelList });
-  });
+  }
+  catch(err) {
+    console.error('데이터베이스 쿼리 실패');
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 // 게시글 추가하는 페이지를 보여줌
